@@ -1,0 +1,13 @@
+{
+    "visibility":{
+       "1" : "Private",
+       "2" : "Public"
+    },
+    "audience":{
+        "1": "Kindergarten",
+        "2": "Elementary",
+        "3": "High-School",
+        "4": "University",
+        "5": "Co-workers"
+    }
+}

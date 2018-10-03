@@ -1,0 +1,42 @@
+{
+    "quiz":{
+        "title" : "test sample quiz",
+        "description": "a very brief description",
+        "visibility": 1,
+        "language": 1,
+        "audience": 1,
+        "credit_resource":"links to source of the quiz",
+        "intro_video_url": "http link for intro video",
+        "questions":[{
+            "question_text":"what is the number to life and everything",
+            "time_limit": 10,
+            "credit_resource":"link to source of the question",
+            "extra_points": 1,
+            "image_url": "link to the question image if needed",
+            "answers":[{
+                "answer_text": "1",
+                "is_required": 1,
+                "is_correct": 0,
+                "shape": "circle"
+            },
+            {
+                "answer_text": "1",
+                "is_required": 1,
+                "is_correct": 0,
+                "shape": "triangle"
+            },
+            {
+                "answer_text": "42",
+                "is_required": 0,
+                "is_correct": 1,
+                "shape": "square"
+            },
+            {
+                "answer_text": "1",
+                "is_required": 0,
+                "is_correct": 0,
+                "shape": "cross"
+            }]
+        }]
+    }
+}
