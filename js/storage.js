@@ -1,7 +1,10 @@
  class Storage {
 
     constructor(type){
-        this.type = type.toLowerCase();
+        if(type == undefined)
+            this.type = 's';
+        else
+            this.type = type.toLowerCase();
     }
 
     get(key){
@@ -58,8 +61,8 @@
     }  
  }
 
-   // fallback if localStorage/sessionStorage is not supported
-   cookieStorage = {
+// fallback if localStorage/sessionStorage is not supported
+cookieStorage = {
     getItem: function getItem(name) {
             //name,value,cookies <- get all the cookies
             var n, v, cookies = document.cookie.split(";");
