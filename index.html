@@ -1,53 +1,89 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>QUIZZER</title>
-        <link rel="shortcut icon" href="#" />
-        <!--Import Google Icon Font-->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-    </head>
-    <body>
-        <div class="container">
-            <h1 class="center-align grey-text text-darken-1">Quizzer</h1>
-            <div class="right-align">
-                <a class="btn-floating btn-large waves-effect waves-light green darken-1"><i class="material-icons">add</i></a>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Play Quiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+</head>
+<body>
+    <div class="container grid-lg">
+        <div class="divider"></div>
+        <header class="navbar">
+            <section class="navbar-section">
+                <a href="/" class="navbar-brand mr-2">Quizzer</a>
+                <a href="/" class="btn btn-link"><b>Show quizzes</b></a>
+                <a href="addquiz.html" class="btn btn-link">Create quiz</a>
+                <a href="playquiz.html" class="btn btn-link">Join game</a>
+            </section>
+        </header>
+        <div class="divider"></div>
+        <h3>My Quizzes</h3>        
+        <div>
+            <div>
+                <script type="noway-tmpl">
+                    {#quizzes}
+                        <div class="card">                
+                            <div class="card-header">
+                                <div class="card-title h5">{{title}</div>
+                                <div class="card-subtitle text-gray">{{description}}</div>
+                            </div>                            
+                            
+                            <div class="card-footer">
+                                <button class="btn btn-primary">play</button>
+                            </div>
+                        </div>            
+                    {/quizzes}
+                </script>
+            </div>
+            <span>Quiz Title</span>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque impedit totam dicta recusandae quam</p>
+            <button class="btn btn-primary">Play</button>
+        </div>
+        <div>
+            
+            <div class="empty">
+                <div class="empty-icon">
+                    <i class="icon icon-people"></i>
+                </div>
+                <p class="empty-title h5">You have no quizzes to play</p>
+                <p class="empty-subtitle">Click the button to start creating.</p>
+                <div class="empty-action">
+                    <button class="btn btn-primary">Create a quiz</button>
+                </div>
             </div>
         </div>
+    </div>
+     <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>             
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
 
-        <!-- container for the views -->
-        <div class="container">
-            <main-ui></main-ui>
-        </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.0/mustache.min.js"></script>
+    
+    <script src="js/db.js"></script>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        
-        <script src="js/page.js"></script>
-        <script src="js/layout.js"></script>
-        <script src="js/router.js"></script>
-        <script src="js/index.js"></script>
+     <script>
+            
+            var db = new DB();
+            db.readOn('quizzes', 
+                function(snapshot){
+                    var data = snapshot.val();
+                    if(data)
+                        console.log(data);
+                    else{
+                        console.log('no data found');
+                    }
+                }, 
+                function(error){
+                    console.log(error);
+                }
+            );
+     </script>
 
-        <!-- Compiled and minified JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-        <!-- Firebase App is always required and must be first -->
-        <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
-        
-        <!-- Add additional services that you want to use -->
-        <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
-        
-        <script>
-            // Initialize Firebase
-            var config = {
-                apiKey: "AIzaSyBxHVmhy0PD-ey1MYlABx_Phfn5-BZh01U",
-                authDomain: "quizzer-df3b3.firebaseapp.com",
-                databaseURL: "https://quizzer-df3b3.firebaseio.com",
-                projectId: "quizzer-df3b3",
-                storageBucket: "quizzer-df3b3.appspot.com",
-                messagingSenderId: "351585110377"
-            };
-            firebase.initializeApp(config);
-        </script>
-    </body>
+</body>
 </html>

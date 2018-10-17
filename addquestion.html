@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Play Quiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+</head>
+<body>
+    <div class="container grid-lg">
+        <div class="divider"></div>
+        <header class="navbar">
+            <section class="navbar-section">
+                <a href="/" class="navbar-brand mr-2">Quizzer</a>
+                <a href="/" class="btn btn-link">Show quizzes</a>
+                <a href="addquiz.html" class="btn btn-link"><b>Create quiz</b></a>
+                <a href="playquiz.html" class="btn btn-link">Join game</a>
+            </section>
+        </header>
+        <div class="divider"></div>
+    
+        <h3>Add Question</h3>        
+        <div>
+            <b>Quiz Title</b>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque impedit totam dicta recusandae quam</p>                        
+            <div class="columns">
+                
+                <div class="form-group column col-8 col-sm-12">
+                    <label class="form-label" for="title">Question</label>
+                    <input class="form-input" type="text" id="title" name="title" placeholder="What is 2 + 2?">
+                </div>
+                <div class="form-group column col-4 col-sm-12">
+                    <label class="form-label" for="time">Time</label>
+                    <select class="form-select" name="time" id="time">
+                        <option value="10">10 secs</option>
+                        <option value="20">20 secs</option>
+                        <option value="30">30 secs</option>
+                        <option value="40">40 secs</option>
+                    </select>
+                </div>
+                <div class="form-group column col-8 col-sm-12">
+                    <label class="form-label" for="source">Source</label>
+                    <input class="form-input" type="text" id="source" name="source" placeholder="The internet">
+                </div>                
+                <div class="form-group column col-6 col-sm-12">
+                    <label for="a1" class="form-label">Answer 1</label>
+                    <input class="form-input" type="text" id="a1" placeholder="9">
+                    <label class="form-radio">
+                        <input id="a1correct" name="correct" type="radio">
+                            <i class="form-icon"></i>
+                    </label>
+                </div>
+                <div class="form-group column col-6 col-sm-12">
+                    <label for="a1" class="form-label">Answer 2</label>
+                    <input class="form-input" type="text" id="a2" placeholder="4">
+                    <label class="form-radio">
+                        <input id="a2correct" name="correct" type="radio">
+                            <i class="form-icon"></i>
+                    </label>
+                </div>
+                <div class="form-group column col-6 col-sm-12">
+                    <label for="a1" class="form-label">Answer 3</label>
+                    <input class="form-input" type="text" id="a3" placeholder="42">
+                    <label class="form-radio">
+                        <input id="a3correct" name="correct" type="radio">
+                            <i class="form-icon"></i>
+                    </label>
+                </div>
+                <div class="form-group column col-6 col-sm-12">
+                    <label for="a1" class="form-label">Answer 4</label>
+                    <input class="form-input" type="text" id="a4" placeholder="3">
+                    <label class="form-radio">
+                        <input id="a4correct" name="correct" type="radio">
+                            <i class="form-icon"></i>
+                    </label>
+                </div>
+                <div class="form-group column col-4">
+                    <button class="btn btn-primary">Add Question</button>
+                </div>
+            </div>                               
+        </div>
+    </div>
+</body>
+</html>

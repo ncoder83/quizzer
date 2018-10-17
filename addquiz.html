@@ -5,28 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Add Quiz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
 </head>
-<body>
-    <div class="container">
-        <nav>
-            <ul>
-                <li><a href="#addquiz">Add Quiz</a></li>
-                <li><a href="#listquery">List Quiz</a></li>
-                <li><a href="#playquiz">Play Quiz</a></li>
-            </ul>   
-        </nav>
+<body>          
+    <div class="container grid-lg">  
+        <div class="divider"></div>
+        <header class="navbar">
+            <section class="navbar-section">
+                <a href="/" class="navbar-brand mr-2">Quizzer</a>
+                <a href="/" class="btn btn-link">Show quizzes</a>
+                <a href="addquiz.html" class="btn btn-link"><b>Create quiz</b></a>
+                <a href="playquiz.html" class="btn btn-link">Join game</a>
+            </section>
+        </header>        
+        <div class="divider"></div>     
         <h3>Create Quiz</h3>
-        <div class="form">        
-            <div>
-                <label for="title">Title</label>
-                <input type="text" id="title" name="title">
+        <div>        
+            <div class="form-group">
+                <label class="form-label" for="title">Title</label>
+                <input class="form-input" type="text" id="title" name="title">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="description">Description</label>
+                <textarea class="form-input" name="description" id="description" rows="3"></textarea>
             </div>
             <div>
-                <label for="description">Description</label>
-                <textarea name="description" id="description" cols="30" rows="10"></textarea>
-            </div>
-            <div>
-                <button id="okButton">OK</button>
+                <button class="btn btn-primary" id="okButton">OK</button>
+                <a href="addquestion.html">OK</a>
             </div>
         </div>        
     </div>
