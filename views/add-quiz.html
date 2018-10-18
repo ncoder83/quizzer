@@ -1,1 +1,61 @@
-<h1>Add quiz</h1>
+<h3>Create quiz</h3>
+<div class="row">
+    <div class="input-field col s6">
+            <input type="text" id="title" data-length="95"/>
+            <label for="title">Title (required)</label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12">
+        <textarea name="description" class="materialize-textarea" id="description" data-length="280"></textarea>
+        <label for="description">Description (required)</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col s4">
+        <select>
+            <option value="" disabled selected>Choose your option</option>
+            <option value="1">Only me</option>
+            <option value="2">Public</option>
+        </select>
+        <label>Visible to</label>
+    </div>
+    <div class="col s4">
+            <label for='lang'>Language</label>
+            <select id='lang' class="browser-default">
+                <option value="" disabled selected>Choose your Language</option>
+                <option value="1">English</option>
+                <option value="2">Spanish</option>
+            </select>
+    </div>
+    <div class="col s4">
+            <label for='aud'>Audience</label>
+            <select id='aud' class="browser-default">
+                <option value="" disabled selected>Choose your audience</option>
+                <option value="1">Kindergarten</option>
+                <option value="2">Elementary</option>
+                <option value="3">Middle-school</option>
+                <option value="4">High-school</option>
+                <option value="5">University</option>
+                <option value="6">Work</option>
+            </select>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12">
+        <textarea name="source" class="materialize-textarea" id="source" data-length="280"></textarea>
+        <label for="source">Credit resource </label>
+    </div>
+</div>
+<div class="row">
+        <div class="input-field col s8">
+            <input type="text"  id="vid" data-length="280"></textarea>
+            <label for="vid">Intro Video</label>
+        </div>
+    </div>
+
+<script type="text/javascript" class="exe">
+    $(document).ready(function(){
+        $('select').formSelect();
+    });
+  </script>
