@@ -7,6 +7,7 @@ class Page{
         // return new Ajax().get(this.url, (res) =>{
         //     this.html = res;
         // });
+        
         return $.get(this.url).then(res => this.html = res);
     }
 
