@@ -24,66 +24,74 @@
         <h3>My Quizzes</h3>        
         <div>
             <div>
-                <script type="noway-tmpl">
-                    {#quizzes}
-                        <div class="card">                
-                            <div class="card-header">
-                                <div class="card-title h5">{{title}</div>
-                                <div class="card-subtitle text-gray">{{description}}</div>
-                            </div>                            
-                            
-                            <div class="card-footer">
-                                <button class="btn btn-primary">play</button>
-                            </div>
-                        </div>            
-                    {/quizzes}
-                </script>
-            </div>
-            <span>Quiz Title</span>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque impedit totam dicta recusandae quam</p>
-            <button class="btn btn-primary">Play</button>
+                <div id="html-output"></div>               
+            </div>           
         </div>
-        <div>
-            
-            <div class="empty">
-                <div class="empty-icon">
-                    <i class="icon icon-people"></i>
-                </div>
-                <p class="empty-title h5">You have no quizzes to play</p>
-                <p class="empty-subtitle">Click the button to start creating.</p>
-                <div class="empty-action">
-                    <button class="btn btn-primary">Create a quiz</button>
-                </div>
-            </div>
+        <div>    
         </div>
     </div>
+
+    <!-- Page Template -->
+    <script id="quiz-list-tpl" type="text/x-handlebar-template">
+        {{#each quizzes}
+            <div class="card">                
+                <div class="card-header">
+                    <div class="card-title h5">{{title}</div>
+                    <div class="card-subtitle text-gray">{{description}}</div>
+                </div>                            
+                <div class="card-footer">
+                    <button class="btn btn-primary">Play</button>
+                </div>
+            </div>            
+        {{/quizzes}}
+    </script>
+    <script id="quiz-list-empty-tpl" type="text/x-handlebar-template">                
+        <div class="empty">
+                <div class="empty-icon">
+                    <i class="icon icon-menu"></i>
+                </div>
+                <p class="empty-title h5">You have no quizzes to play</p>
+                <p class="empty-subtitle">Click the button below to start creating your quiz.</p>
+                <div class="empty-action">
+                    <a href="addquiz.html" class="btn btn-primary">Create a quiz</a>
+                </div>
+            </div>
+    </script>
+
      <!-- Firebase App is always required and must be first -->
     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>             
     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.0/mustache.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
     
     <script src="js/db.js"></script>
 
      <script>
-            
+
+
+            //get our firesotre up
             var db = new DB();
-            db.readOn('quizzes', 
-                function(snapshot){
+           
+            db.readOn('quizzes', (snapshot) => {
                     var data = snapshot.val();
-                    if(data)
-                        console.log(data);
+                    var output = '';
+                    if(data){
+                        var quizlist = document.getElementById('quiz-list-tpl').innerHTML;
+                        output = Handlebars.compile(quizlist)(data);
+                    }   
                     else{
                         console.log('no data found');
+                        var emptylist = document.getElementById('quiz-list-empty-tpl').innerHTML;
+                        output = Handlebars.compile(emptylist)();
                     }
+                    document.getElementById('html-output').innerHTML += output;
                 }, 
                 function(error){
                     console.log(error);
                 }
             );
      </script>
-
 </body>
 </html>
