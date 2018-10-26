@@ -15,12 +15,13 @@
         <header class="navbar">
             <section class="navbar-section">
                 <a href="/" class="navbar-brand mr-2">Quizzer</a>
-                <a href="/" class="btn btn-link"><b>Show quizzes</b></a>
                 <a href="addquiz.html" class="btn btn-link">Create quiz</a>
                 <a href="playquiz.html" class="btn btn-link">Join game</a>
             </section>
         </header>
         <div class="divider"></div>
+        <div style="display: block;height: 40px;"></div>
+
         <h3>My Quizzes</h3>        
         <div>
             <div>
@@ -33,17 +34,17 @@
 
     <!-- Page Template -->
     <script id="quiz-list-tpl" type="text/x-handlebar-template">
-        {{#each quizzes}
+        {{#each quizzes}}
             <div class="card">                
                 <div class="card-header">
-                    <div class="card-title h5">{{title}</div>
+                    <div class="card-title h5">{{title}}</div>
                     <div class="card-subtitle text-gray">{{description}}</div>
                 </div>                            
                 <div class="card-footer">
                     <button class="btn btn-primary">Play</button>
                 </div>
             </div>            
-        {{/quizzes}}
+        {{/each}}
     </script>
     <script id="quiz-list-empty-tpl" type="text/x-handlebar-template">                
         <div class="empty">
@@ -76,6 +77,7 @@
            
             db.readOn('quizzes', (snapshot) => {
                     var data = snapshot.val();
+                    console.log('data that came back',data);
                     var output = '';
                     if(data){
                         var quizlist = document.getElementById('quiz-list-tpl').innerHTML;

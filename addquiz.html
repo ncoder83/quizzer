@@ -15,12 +15,12 @@
         <header class="navbar">
             <section class="navbar-section">
                 <a href="/" class="navbar-brand mr-2">Quizzer</a>
-                <a href="/" class="btn btn-link">Show quizzes</a>
                 <a href="addquiz.html" class="btn btn-link"><b>Create quiz</b></a>
                 <a href="playquiz.html" class="btn btn-link">Join game</a>
             </section>
         </header>        
         <div class="divider"></div>     
+        <div style="display: block;height: 40px;"></div>
         <h3>Create Quiz</h3>
         <div>        
             <div class="form-group">
@@ -32,9 +32,48 @@
                 <textarea class="form-input" name="description" id="description" rows="3"></textarea>
             </div>
             <div>
-                <a href="addquestion.html" class="btn btn-primary">Add Questions</a>
+                <button id="createQBtn" class="btn btn-primary">Create Quiz</button>
             </div>
         </div>        
     </div>
+
+      <!-- Firebase App is always required and must be first -->
+      <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>             
+      <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
+  
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
+      
+      <script src="js/db.js"></script>
+
+      <script>
+          // get input value and send them to firebase
+          
+          const btnCreate = document.getElementById('createQBtn');
+          const db = new DB();
+
+          btnCreate.addEventListener('click', e => {
+            const txtTitle = document.getElementById('title').value;
+            const txtDescription = document.getElementById('description').value;
+            
+            if(!(txtTitle.length > 0)){
+                alert('Please enter the quiz title');
+                return;
+            }
+
+            if(!(txtDescription.length > 0)){
+                alert('Please enter a description for the quiz');
+                return;
+            }
+
+            const quizRef = db.createNode('quizzes');
+            const quiz = {title: txtTitle, description : txtDescription};
+            quizRef.push(quiz);
+            location.href = 'addquestion.html';
+
+          });
+
+      </script>
 </body>
 </html>
